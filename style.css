@@ -22,6 +22,10 @@
         font-family: "Poppins", sans-serif;
         text-transform: uppercase;
     }
+    & ul{
+        display: flex;
+        gap: 1rem;
+    }
 }
 
 
