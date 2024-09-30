@@ -70,6 +70,11 @@
             text-transform: uppercase;
         }
     }
+    & div{
+        & form{
+            display: none;
+        }
+    }
     & .nav-list{
         display: flex;
         font-size: 15px;
@@ -131,26 +136,36 @@ main{
                 font-size: 27px;
             }
         }
-        & .nav-list{
-            
+
+        & div{
+            opacity: 0;
             font-size: 17px;
             background-color: snow;
-            position: absolute;
+            position: fixed;
             flex-direction: column;
             padding-top: 10px;
-            padding-left: 12px;
-            padding-bottom: 100vh;
-            padding-right: 70vw;
+            padding-left: 11px;
+            padding-bottom: 100%;
+            padding-right: 70%;
             gap: 2rem;
             top: 89px;
             left: 0px;
+            overflow-y: scroll;
+        }
+        & .nav-list{
+            
+            
+            
             
             & a{
                 padding: 0;
             }
+            & a:hover{
+                background-color: transparent;
+            }
         }
-        & .no-visible{
-            opacity: 0;
+        & .visible{
+            opacity: 1;
         }
         & .nav-icons{
             
@@ -161,6 +176,9 @@ main{
             }
             & a{
                 padding: 10px .5rem;
+            }
+            & a:hover{
+                background-color: transparent;
             }
             
         }
