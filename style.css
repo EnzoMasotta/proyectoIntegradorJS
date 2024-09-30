@@ -70,27 +70,30 @@
             text-transform: uppercase;
         }
     }
-    & div{
-        & form{
-            display: none;
-        }
-    }
     & .nav-list{
         display: flex;
         font-size: 15px;
         font-weight: 500;
-        
-        & a{
-            color: #000000;
-            padding: 10px 2rem;
-            border: none;
-            border-radius: 10px;
-            transition: all .5s ease-in-out;
+
+        & form{
+            display: none;
         }
-        & a:hover{
-            transition: all .5s ease-in-out;
-            background-color: var(--gray);
+        & .menu-list {
+            display: flex;
+
+            & a{
+                color: #000000;
+                padding: 10px 2rem;
+                border: none;
+                border-radius: 10px;
+                transition: all .5s ease-in-out;
+            }
+            & a:hover{
+                transition: all .5s ease-in-out;
+                background-color: var(--gray);
+            }
         }
+       
     }
     & .nav-icons{
         display: flex;
@@ -136,32 +139,33 @@ main{
                 font-size: 27px;
             }
         }
-
-        & div{
+        & .nav-list{
             opacity: 0;
-            font-size: 17px;
-            background-color: snow;
             position: fixed;
-            flex-direction: column;
-            padding-top: 10px;
-            padding-left: 11px;
-            padding-bottom: 100%;
-            padding-right: 70%;
-            gap: 2rem;
             top: 89px;
             left: 0px;
-            overflow-y: scroll;
-        }
-        & .nav-list{
-            
-            
-            
-            
-            & a{
-                padding: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: snow;
+            padding-top: 10px;
+            padding-left: 12px;
+            height: 700px;
+            padding-right: 35%;
+
+            & .menu-list{
+                flex-direction: column;
+                gap: 2rem;
+                font-size: 17px;
+
+                & a{
+                    padding: 0;
+                }
+                & a:hover{
+                    background-color: transparent;
+                }
             }
-            & a:hover{
-                background-color: transparent;
+            & form{
+                display: flex;
             }
         }
         & .visible{
