@@ -136,12 +136,12 @@ body{
 
 @media (max-width: 1450px){
     .advice{
-        height: 30px;
+        height: 35px;
         font-size: 12px;
     }
     .nav-bar{
 
-        top: 30px;
+        top: 35px;
         height: 50px;
         padding: 0 1%;
         
@@ -161,7 +161,7 @@ body{
             opacity: 0;
             position: fixed;
             border-top: .4px solid #dedede;
-            top: 89.5px;
+            top: 84.5px;
             left: 0px;
             flex-direction: column;
             background-color: snow;
