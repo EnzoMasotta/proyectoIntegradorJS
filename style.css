@@ -93,12 +93,11 @@ body{
                 color: #000000;
                 padding: 10px 2rem;
                 border: none;
-                border-radius: 10px;
-                transition: all .5s ease-in-out;
+                transition: all .3s ease-in-out;
             }
             & a:hover{
-                transition: all .5s ease-in-out;
-                background-color: var(--gray);
+                transition: all .3s ease-in-out;
+                color: #6c6767;
             }
         }
        
@@ -114,39 +113,35 @@ body{
             padding: 10px 1.8rem;
             border: none;
             border-radius: 10px;
-            transition: all .5s ease-in-out;
+            transition: all .3s ease-in-out;
         }
         & a:hover{
-            transition: all .5s ease-in-out;
-            background-color: var(--gray);
+            transition: all .3s ease-in-out;
+            color: #6c6767;
         }
     }
 
 }
 
 .hero{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 16%;
-    margin-top: 170px;
-    background-color: snow;
+    margin-top: 110px;
+    height: 1000px;
+    background-image: url(Assets/pexels-cottonbro-10132105.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 100px;
+
     
-    & p{
-        font-size: 70px;
-        font-weight: 500;
-        margin-top: 30px;
-    }
-    & .hero-image{
-        width: 500px;
-        height: 500px;
-    }
-
-
 }
 
 @media (max-width: 1450px){
+    .advice{
+        height: 30px;
+        font-size: 12px;
+    }
     .nav-bar{
 
+        top: 30px;
         height: 50px;
         padding: 0 1%;
         
@@ -177,7 +172,6 @@ body{
             transition: opacity 0.3s ease, transform 0.3s ease;
             overflow-y: auto; 
             max-height: 100vh; 
-            -webkit-overflow-scrolling: touch;
             z-index: 999;
             
             
