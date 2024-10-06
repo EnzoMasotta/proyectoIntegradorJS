@@ -105,11 +105,11 @@ body{
     }
     & .nav-icons{
         display: flex;
-        font-size: 25px;
         flex-grow: 1;
         justify-content: flex-end;
         
         & a{
+            font-size: 25px;
             color: #000000;
             padding: 10px 1.8rem;
             border: none;
@@ -129,7 +129,6 @@ body{
 
     & .hero-image{
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 850px;
@@ -138,16 +137,24 @@ body{
         background-size: cover;
         background-repeat: no-repeat;
         
-    
-        & h1{
-            background-color: transparent;
-            color: #EF7674;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 200px;
-            text-align: center;
-            letter-spacing: 20px;
+        & .hero-title{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+
+            & h1{
+                background-color: transparent;
+                color: #EF7674;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+                font-family: "Bebas Neue", sans-serif;
+                font-size: 9vw;
+                letter-spacing: 2vh;
+                text-align: center;
+            }
+            
         }
+        
     }
 }
 
@@ -230,13 +237,14 @@ body{
         }
         & .nav-icons{
             
-            font-size: 27px;
+            
             
             & .user-icon{
                 display: none;
             }
             & a{
                 padding: 10px .5rem;
+                
             }
             & a:hover{
                 background-color: transparent;
@@ -256,11 +264,7 @@ body{
 
                 margin: 30px 0;
 
-                & h1{
-                    font-size: 8vw;
-                    padding: 14px 0;
-                    
-                }
+            
             }
             
             
@@ -289,5 +293,21 @@ body{
                 font-size: 20px;
             }
         }
+    }
+}
+
+
+@media (max-width: 344px){
+    .nav-bar{
+
+        & .logo-title{
+
+            & .title{
+                font-size: 18px;
+            }
+        }
+    }
+    .nav-icons{
+        font-size: 25px;
     }
 }
