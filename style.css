@@ -249,34 +249,21 @@ body{
         
 
         & .hero-image{
+            height: auto;
             width: 100%;
-            background-image: url(Assets/pexels-cottonbro-10132105.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
             
-        
-            & h1{
-                font-size: 150px;
-                padding: 20px 0;
+            & .hero-title{
+
+                margin: 30px 0;
+
+                & h1{
+                    font-size: 8vw;
+                    padding: 14px 0;
+                    
+                }
             }
-        }
-    }
-}
-
-@media (max-width: 1270px){
-    .hero{
-        
-
-        & .hero-image{
-            width: 100%;
-            background-image: url(Assets/pexels-cottonbro-10132105.jpg);
-            background-size: contain;
-            background-repeat: no-repeat;
             
-        
-            & h1{
-                
-            }
+            
         }
     }
 }
