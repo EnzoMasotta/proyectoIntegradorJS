@@ -125,34 +125,33 @@ body{
 }
 
 .hero{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
-    
-
     margin-top: 110px;
-    height: 510px;
-    width: 100%;
-    background-image: url(Assets/pexels-cottonbro-10132105.jpg);
-    background-color: #EF7674;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-bottom: 100px;
 
-    & h1{
-        background-color: snow;
-        padding: 20px 8px;
-        margin-right: 125px;
-        max-width: 500px;
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 72px;
-        text-align: center;
-        letter-spacing: 3px;
+    & .hero-image{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 850px;
+        width: 100%;
+        background-image: url(Assets/pexels-cottonbro-10132105.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+    
+        & h1{
+            background-color: transparent;
+            color: #EF7674;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 200px;
+            text-align: center;
+            letter-spacing: 20px;
+        }
     }
 }
 
-@media (max-width: 1450px){
+@media (max-width: 1440px){
     .advice{
         height: 35px;
         font-size: 12px;
@@ -245,13 +244,39 @@ body{
             
         }
     }
-}
-
-@media (max-width: 1300px){
     .hero{
+        margin-top: 85px;
+        
 
         & .hero-image{
-            display: none;
+            width: 100%;
+            background-image: url(Assets/pexels-cottonbro-10132105.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        
+            & h1{
+                font-size: 150px;
+                padding: 20px 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 1270px){
+    .hero{
+        
+
+        & .hero-image{
+            width: 100%;
+            background-image: url(Assets/pexels-cottonbro-10132105.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+        
+            & h1{
+                
+            }
         }
     }
 }
