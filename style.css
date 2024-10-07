@@ -5,9 +5,12 @@
 button, 
 input[type="button"], 
 input[type="submit"] {
-    -webkit-appearance: none; /* Safari */
-    -moz-appearance: none; /* Firefox */
-    appearance: none; /* Otros navegadores */
+    -webkit-appearance: none; /* Elimina el estilo predeterminado de Safari */
+    -moz-appearance: none; /* Elimina el estilo predeterminado de Firefox */
+    appearance: none; /* Elimina el estilo predeterminado en otros navegadores */
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: inherit; /* Hereda el color del texto del padre */
 }
 
 :root{
