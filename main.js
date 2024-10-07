@@ -18,7 +18,8 @@ toggleMenu.addEventListener("click", () => {
 //Carrito
 const cart = document.querySelector("#cart");
 const openCart = document.querySelector("#open-cart");
-const closeCart = document.querySelector("#close-cart")
+const closeCart = document.querySelector("#close-cart");
+const overley = document.querySelector("#overley")
 
 function lockScroll() {
     
@@ -37,6 +38,7 @@ function unlockScroll() {
 openCart.addEventListener("click", () => {
     event.stopPropagation();
     cart.classList.add("visibleCart");
+    overley.classList.add("visibleOverley")
     lockScroll(); 
 
     if (navList.classList.contains("visible")) {
@@ -48,6 +50,7 @@ openCart.addEventListener("click", () => {
 // Cerrar el carrito
 closeCart.addEventListener("click", () => {
     cart.classList.remove("visibleCart");
+    overley.classList.remove("visibleOverley")
     unlockScroll();  
 });
 
@@ -55,6 +58,7 @@ body.addEventListener("click", (event) => {
     // Verifica si el clic fue fuera del carrito y no en el botón de abrir
     if (cart.classList.contains("visibleCart") && !cart.contains(event.target) && event.target !== openCart) {
         cart.classList.remove("visibleCart");
+        overley.classList.remove("visibleOverley")
         unlockScroll(); // Desbloquea el scroll
     }
 });
