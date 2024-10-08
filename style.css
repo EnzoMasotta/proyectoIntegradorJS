@@ -5,12 +5,13 @@
 button, 
 input[type="button"], 
 input[type="submit"] {
-    -webkit-appearance: none; /* Elimina el estilo predeterminado de Safari */
-    -moz-appearance: none; /* Elimina el estilo predeterminado de Firefox */
-    appearance: none; /* Elimina el estilo predeterminado en otros navegadores */
-    background: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    color: inherit; /* Hereda el color del texto del padre */
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background: transparent; 
+    border: none; 
+    color: inherit; 
+    outline: none;
 }
 
 :root{
@@ -225,7 +226,7 @@ body{
     }
 }
 
-.carousel {
+.products {
     margin-top: 60px;
     display: flex;
     flex-direction: column;

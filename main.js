@@ -55,11 +55,46 @@ closeCart.addEventListener("click", () => {
 });
 
 body.addEventListener("click", (event) => {
-    // Verifica si el clic fue fuera del carrito y no en el botón de abrir
+    // Verifica si el clic fue afuera del carrito y no en el botón de abrir
     if (cart.classList.contains("visibleCart") && !cart.contains(event.target) && event.target !== openCart) {
         cart.classList.remove("visibleCart");
         overley.classList.remove("visibleOverley")
         unlockScroll(); // Desbloquea el scroll
     }
 });
+
+//Array de productos
+const products = [
+    {
+        id: 1,                      
+        nombre: 'Remera basic',                   
+        categoria: 'Remeras',         
+        precio: 4500,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Remera_Basic1.webp',     
+    },
+];
+
+function renderizarProductos() {
+    const container = document.querySelector('.products-imgs');
+
+    // Limpiar contenido previo
+    container.innerHTML = '';
+
+    products.forEach(product => {
+        container.innerHTML += `
+            <div class="producto">
+                <img src="${product.imagen}" alt="${product.nombre}" style="width:100px;height:100px;">
+                <h3>${product.nombre}</h3>
+                <p>Precio: $${product.precio}</p>
+                <p>Stock: ${product.stock} unidades</p>
+            </div>
+        `;
+    });
+}
+
+renderizarProductos();
+
+
 
