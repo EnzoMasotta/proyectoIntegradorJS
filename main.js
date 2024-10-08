@@ -67,13 +67,31 @@ body.addEventListener("click", (event) => {
 const products = [
     {
         id: 1,                      
-        nombre: 'Remera basic',                   
+        nombre: 'Remeron oversize',                   
         categoria: 'Remeras',         
         precio: 4500,                 
         stock: 50,                   
         cantidad: 0,                 
-        imagen: 'Assets/Remera_Basic1.webp',     
+        imagen: 'Assets/Remeron_Oversize1.webp',     
     },
+    {
+        id: 2,                      
+        nombre: 'Remera oversize',                   
+        categoria: 'Remeras',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Remera_Oversize2.webp', 
+    },
+    {
+        id: 3,                      
+        nombre: 'Remera regular fit',                   
+        categoria: 'Remeras',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Remera_Regular_Fit3.webp', 
+    }
 ];
 
 function renderizarProductos() {
@@ -85,10 +103,9 @@ function renderizarProductos() {
     products.forEach(product => {
         container.innerHTML += `
             <div class="producto">
-                <img src="${product.imagen}" alt="${product.nombre}" style="width:100px;height:100px;">
+                <img src="${product.imagen}" alt="${product.nombre}" style="width:300px;height:450px;">
                 <h3>${product.nombre}</h3>
-                <p>Precio: $${product.precio}</p>
-                <p>Stock: ${product.stock} unidades</p>
+                <p>$${product.precio}</p>
             </div>
         `;
     });

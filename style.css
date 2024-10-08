@@ -338,6 +338,9 @@ body{
             }
             
         }
+        & .cart{
+            width: 50%;
+        }
     }
     .hero{
         margin-top: 85px;
@@ -363,7 +366,7 @@ body{
             }
         }
         & .cart{
-            width: 70%;
+            width: 85%;
         }
     }
 }
