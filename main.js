@@ -97,15 +97,22 @@ const products = [
 function renderizarProductos() {
     const container = document.querySelector('.products-imgs');
 
+    container.style.display = 'flex';
+    container.style.flexWrap = 'wrap';
+    container.style.justifyContent = 'center';
+    container.style.AlingItems = 'center';
+
     // Limpiar contenido previo
     container.innerHTML = '';
 
     products.forEach(product => {
         container.innerHTML += `
-            <div class="producto">
-                <img src="${product.imagen}" alt="${product.nombre}" style="width:300px;height:450px;">
-                <h3>${product.nombre}</h3>
-                <p>$${product.precio}</p>
+            <div class="productos">
+                <div>
+                    <img src="${product.imagen}" alt="${product.nombre}" style="width:120px;height:300px;">
+                    <h3 style="font-size:15px;">${product.nombre}</h3>
+                    <p>$${product.precio}</p>
+                </div>            
             </div>
         `;
     });
