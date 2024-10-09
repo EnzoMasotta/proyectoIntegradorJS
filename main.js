@@ -91,11 +91,74 @@ const products = [
         stock: 50,                   
         cantidad: 0,                 
         imagen: 'Assets/Remera_Regular_Fit3.webp', 
+    },
+    {
+        id: 4,                      
+        nombre: 'Hoodie oversize frisado',                   
+        categoria: 'Buzos',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Hoodie_Oversize_Frisado1.webp', 
+    },
+    {
+        id: 5,                      
+        nombre: 'Hoodie oversize',                   
+        categoria: 'Buzos',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Hoodie_Oversize2.webp', 
+    },
+    {
+        id: 6,                      
+        nombre: 'Hoodie soft frisado',                   
+        categoria: 'Buzos',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Hoodie_Super_Soft_Frisado3.webp', 
+    },
+    {
+        id: 7,                      
+        nombre: 'Canguro frisado',                   
+        categoria: 'Buzos',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Canguro_Frisado4.webp', 
+    },
+    {
+        id: 8,                      
+        nombre: 'Jogger regular frisado',                   
+        categoria: 'Pantalones',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Jogger_Regular_Frisado1.webp', 
+    },
+    {
+        id: 9,                      
+        nombre: 'Jogger soft frisado',                   
+        categoria: 'Pantalones',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Jogger_Regular_Super_Soft_Frisado2.webp', 
+    },
+    {
+        id: 10,                      
+        nombre: 'Regular pants',                   
+        categoria: 'Pantalones',         
+        precio: 5000,                 
+        stock: 50,                   
+        cantidad: 0,                 
+        imagen: 'Assets/Regular_Pants3.webp', 
     }
 ];
 
 function renderizarProductos() {
-    const container = document.querySelector('.products-imgs');
+    const container = document.querySelector('.products-cards');
 
     container.style.display = 'flex';
     container.style.flexWrap = 'wrap';
@@ -109,7 +172,7 @@ function renderizarProductos() {
         container.innerHTML += `
             <div class="productos">
                 <div>
-                    <img src="${product.imagen}" alt="${product.nombre}" style="width:120px;height:300px;">
+                    <img src="${product.imagen}" alt="${product.nombre}" style="width:150px;height:250px;">
                     <h3 style="font-size:15px;">${product.nombre}</h3>
                     <p>$${product.precio}</p>
                 </div>            

@@ -47,7 +47,6 @@ body{
     justify-content: center;
     align-items: center;
     width: 100vw;
-    padding: 0 3%;
     background-color: var(--black);
     color: snow;
     height: 40px;
@@ -133,6 +132,7 @@ body{
             & i{
                 font-size: 27px;
             }
+            
             color: var(--black);
             padding: 0 1.8rem;
             border: none;
@@ -234,7 +234,7 @@ body{
 }
 
 .products {
-    margin-top: 60px;
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -242,7 +242,31 @@ body{
     
     & h1{
         font-family: "Bebas Neue", sans-serif;
-        font-size: 70px;
+        font-size: 6vw;
+    }
+    & form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 25px 0;
+        
+        & button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            
+            & a{
+                font-size: 18px;
+                font-weight: 400;
+            }
+            & i{
+                font-size: 25px;
+            }
+        }
+        
+        
     }
 }
 
