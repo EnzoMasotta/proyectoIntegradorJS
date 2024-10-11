@@ -249,20 +249,21 @@ body{
         justify-content: center;
         align-items: center;
         margin: 25px 0;
+        gap: 1rem;
         
         & button{
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 5px;
             cursor: pointer;
+            border: 1px solid #909090;
+            padding: 2px 5px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             
             & a{
-                font-size: 18px;
-                font-weight: 400;
-            }
-            & i{
-                font-size: 25px;
+                font-size: 15px;
+                font-weight: 500;
             }
         }
         
@@ -419,6 +420,60 @@ body{
                     font-size: 25px;
                 }
                 
+            }
+        }
+    }
+    .products {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        & h1{
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 6vw;
+        }
+        & form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px 0;
+            gap: 1rem;
+            
+            & button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                border: 1px solid #909090;
+                padding: 2px 5px;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                
+                & a{
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+            
+            
+        }
+        & .products-cards{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+
+            & .card{
+                & img{
+                    width: 120px;
+                    height: 200px;
+                }
+                & p{
+                    font-size: 10px;
+                }
             }
         }
     }

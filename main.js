@@ -68,7 +68,7 @@ const products = [
     {
         id: 1,                      
         nombre: 'Remeron oversize',                   
-        categoria: 'Remeras',         
+        categoria: 'remeras',         
         precio: 4500,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -77,7 +77,7 @@ const products = [
     {
         id: 2,                      
         nombre: 'Remera oversize',                   
-        categoria: 'Remeras',         
+        categoria: 'remeras',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -86,7 +86,7 @@ const products = [
     {
         id: 3,                      
         nombre: 'Remera regular fit',                   
-        categoria: 'Remeras',         
+        categoria: 'remeras',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -95,16 +95,16 @@ const products = [
     {
         id: 4,                      
         nombre: 'Hoodie oversize frisado',                   
-        categoria: 'Buzos',         
+        categoria: 'buzos',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
-        imagen: 'Assets/Hoodie_Oversize_Frisado1.webp', 
+        imagen: 'Assets/Buzo_Oversize_Frisado1.webp', 
     },
     {
         id: 5,                      
         nombre: 'Hoodie oversize',                   
-        categoria: 'Buzos',         
+        categoria: 'buzos',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -113,7 +113,7 @@ const products = [
     {
         id: 6,                      
         nombre: 'Hoodie soft frisado',                   
-        categoria: 'Buzos',         
+        categoria: 'buzos',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -122,7 +122,7 @@ const products = [
     {
         id: 7,                      
         nombre: 'Canguro frisado',                   
-        categoria: 'Buzos',         
+        categoria: 'buzos',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -131,7 +131,7 @@ const products = [
     {
         id: 8,                      
         nombre: 'Jogger regular frisado',                   
-        categoria: 'Pantalones',         
+        categoria: 'pantalones',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -140,7 +140,7 @@ const products = [
     {
         id: 9,                      
         nombre: 'Jogger soft frisado',                   
-        categoria: 'Pantalones',         
+        categoria: 'pantalones',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -149,7 +149,7 @@ const products = [
     {
         id: 10,                      
         nombre: 'Regular pants',                   
-        categoria: 'Pantalones',         
+        categoria: 'pantalones',         
         precio: 5000,                 
         stock: 50,                   
         cantidad: 0,                 
@@ -157,31 +157,55 @@ const products = [
     }
 ];
 
-function renderizarProductos() {
-    const container = document.querySelector('.products-cards');
+const displayProducts = (productList) => {
+    const productsCards = document.querySelector(".products-cards");
 
-    container.style.display = 'flex';
-    container.style.flexWrap = 'wrap';
-    container.style.justifyContent = 'center';
-    container.style.AlingItems = 'center';
+    productsCards.innerHTML = ""
 
-    // Limpiar contenido previo
-    container.innerHTML = '';
-
-    products.forEach(product => {
-        container.innerHTML += `
-            <div class="productos">
-                <div>
-                    <img src="${product.imagen}" alt="${product.nombre}" style="width:150px;height:250px;">
-                    <h3 style="font-size:15px;">${product.nombre}</h3>
-                    <p>$${product.precio}</p>
-                </div>            
-            </div>
-        `;
+    productList.forEach(product => {
+        const div = document.createElement("div");
+        div.className = 'card'
+        div.innerHTML = `
+            <img src="${product.imagen}" alt="${product.nombre}">
+            <p>${product.nombre}</p>
+            <p>$${product.precio}</p>
+        
+        `
+        productsCards.append(div);
     });
+
+    
 }
 
-renderizarProductos();
+//Filtro
+const filterProducts = (categoria) => {
+    const productToShow = products.filter(product => product.categoria === categoria);
+    displayProducts(productToShow);
+}
+//Botones 
+const todoBtn = document.getElementById("todoBtn");
+const remerasBtn = document.getElementById("remerasBtn");
+const pantalonesBtn = document.getElementById("pantalonesBtn");
+const buzosBtn = document.getElementById("buzosBtn");
 
+//Funciones de los botones
+
+todoBtn.addEventListener('click', () => {
+    displayProducts(products);
+});
+
+remerasBtn.addEventListener('click', () => {
+    filterProducts('remeras');
+});
+
+pantalonesBtn.addEventListener('click', () => {
+    filterProducts('pantalones');
+});
+
+buzosBtn.addEventListener('click', () => {
+    filterProducts('buzos');
+});
+
+displayProducts(products);
 
 
