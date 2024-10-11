@@ -168,7 +168,7 @@ const displayProducts = (productList) => {
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
             <p>${product.nombre}</p>
-            <p>$${product.precio}</p>
+            <p class="price">$${product.precio}</p>
         
         `
         productsCards.append(div);

@@ -40,6 +40,7 @@ body{
     overflow: hidden;
 }
 
+/*Arriba del header*/
 .advice{
     position: fixed;
     top: 0;
@@ -53,6 +54,7 @@ body{
     font-size: 14px;
 }
 
+/*Contenedor del header*/
 .nav-bar{
     position: fixed;
     top: 40px;
@@ -64,6 +66,7 @@ body{
     padding: 0 3%;
     height: 70px;
 
+    /*Menu desplegable*/
     & .toggle-menu{
        
         display: none;
@@ -80,6 +83,7 @@ body{
         }
         
     }
+    /*Logo*/
     & .logo-title{
         display: flex;
         flex-grow: 1;
@@ -93,6 +97,7 @@ body{
             text-transform: uppercase;
         }
     }
+    /*Lista del menu*/
     & .nav-list{
         display: flex;
         font-size: 15px;
@@ -118,6 +123,7 @@ body{
         }
        
     }
+    /*Iconos del header*/
     & .nav-icons{
         display: flex;
         align-items: center;
@@ -143,6 +149,7 @@ body{
             color: #6c6767;
         }
     }
+    /*Fondo opaco del carrito*/
     & .overley{
         opacity: 0;
         pointer-events: none;
@@ -160,6 +167,7 @@ body{
         pointer-events: all;
         z-index: 990;
     }
+    /*Carrito*/
     & .cart{
         background-color: rgb(255, 255, 255);
         display: flex;
@@ -199,6 +207,7 @@ body{
 
 }
 
+/*Portada*/
 .hero{
     margin-top: 110px;
 
@@ -233,6 +242,7 @@ body{
     }
 }
 
+/*Seccion de productos*/
 .products {
     margin-top: 35px;
     display: flex;
@@ -268,6 +278,33 @@ body{
         }
         
         
+    }
+    & .products-cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+
+        & .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+
+            & img{
+                width: 300px;
+                height: 440px;
+            }
+            & p{
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: 400;
+            }
+            & .price{
+                color: rgb(255, 63, 63);
+            }
+        }
     }
 }
 
