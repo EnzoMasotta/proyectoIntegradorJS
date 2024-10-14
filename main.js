@@ -8,11 +8,6 @@ const advice = document.querySelector(".advice")
 toggleMenu.addEventListener("click", () => {
     navList.classList.toggle("visible");
     body.classList.toggle('no-scroll');
-
-    if (cart.classList.contains("visibleCart")) {
-        cart.classList.remove("visibleCart");
-        body.classList.remove('no-scroll');
-    }
 })
 
 //Carrito
@@ -157,43 +152,52 @@ const products = [
     }
 ];
 
-let cart = [];
+//Array vacio
+let cart = []; 
 
-// Añadir evento a cada botón "Comprar"
-const addProductToCart = (product) => {
-    // Añadir el producto al carrito (si ya existe, simplemente aumenta la cantidad)
-    const productInCart = cart.find(item => item.id === product.id);
-    
-    if (productInCart) {
-        productInCart.cantidad += 1;
-    } else {
-        cart.push({ ...product, cantidad: 1 });
-    }
-
-    // Llamar a la función que actualiza la vista del carrito
-    renderCart();
-};
-
-// Renderizar productos en el carrito
 const renderCart = () => {
     const cartProductsList = document.querySelector(".cart-products-list");
+    cartProductsList.innerHTML = "";
 
-    cartProductsList.innerHTML = ""; // Limpiar el carrito antes de renderizar
+    // Verifica si el carrito está vacío
+    if (cart.length === 0) {
+        cartProductsList.innerHTML = "<p>Carrito vacío.</p>"; 
+        return; 
+    }
 
+    // Renderiza los productos del carrito
     cart.forEach(product => {
         const div = document.createElement("div");
         div.className = 'cart-product-card';
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
-            <p>${product.nombre}</p>
-            <p>Cantidad: ${product.cantidad}</p>
+            <div class="product-card-cart-right-section">
+                <p>${product.nombre}</p>
+                <p>$${product.precio}</p>
+                <p>Cantidad: ${product.cantidad}</p>
+            </div>
         `;
         cartProductsList.append(div);
     });
 };
 
+// Añadir producto al carrito 
+const addProductToCart = (product) => {
+    const productInCart = cart.find(item => item.id === product.id);
+    
+    if (productInCart) {
+        productInCart.cantidad += 1; 
+    } else {
+        cart.push({ ...product, cantidad: 1 });
+    }
 
-//Renderizacion de los productos
+    renderCart(); 
+};
+
+// Inicialmente renderiza el carrito vacío
+renderCart();
+
+//Renderizacion de los productos en el sitio
 const displayProducts = (productList) => {
     const productsCards = document.querySelector(".products-cards");
 
@@ -219,19 +223,19 @@ const displayProducts = (productList) => {
     
 }
 
-//Filtro
+//Filtro de categorias
 const filterProducts = (categoria) => {
     const productToShow = products.filter(product => product.categoria === categoria);
     displayProducts(productToShow);
 }
-//Botones 
+
+//Botones de categorias
 const todoBtn = document.getElementById("todoBtn");
 const remerasBtn = document.getElementById("remerasBtn");
 const pantalonesBtn = document.getElementById("pantalonesBtn");
 const buzosBtn = document.getElementById("buzosBtn");
 
 //Funciones de los botones
-
 todoBtn.addEventListener('click', () => {
     displayProducts(products);
 });

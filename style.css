@@ -203,6 +203,29 @@ body{
                 }
             }
         }
+        & .cart-products-list{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & .cart-product-card{
+                display: flex;
+                gap: 20px;
+
+                & img{
+                    width: 110px;
+                }
+                & .product-card-cart-right-section{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    
+                    & p{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
         
 
     }
