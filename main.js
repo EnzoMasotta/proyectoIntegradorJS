@@ -16,7 +16,7 @@ toggleMenu.addEventListener("click", () => {
 })
 
 //Carrito
-const cart = document.querySelector("#cart");
+const cartContainer = document.querySelector("#cart");
 const openCart = document.querySelector("#open-cart");
 const closeCart = document.querySelector("#close-cart");
 const overley = document.querySelector("#overley")
@@ -37,7 +37,7 @@ function unlockScroll() {
 // Abrir el carrito
 openCart.addEventListener("click", () => {
     event.stopPropagation();
-    cart.classList.add("visibleCart");
+    cartContainer.classList.add("visibleCart");
     overley.classList.add("visibleOverley")
     lockScroll(); 
 
@@ -49,15 +49,15 @@ openCart.addEventListener("click", () => {
 
 // Cerrar el carrito
 closeCart.addEventListener("click", () => {
-    cart.classList.remove("visibleCart");
+    cartContainer.classList.remove("visibleCart");
     overley.classList.remove("visibleOverley")
     unlockScroll();  
 });
 
 body.addEventListener("click", (event) => {
     // Verifica si el clic fue afuera del carrito y no en el botón de abrir
-    if (cart.classList.contains("visibleCart") && !cart.contains(event.target) && event.target !== openCart) {
-        cart.classList.remove("visibleCart");
+    if (cartContainer.classList.contains("visibleCart") && !cartContainer.contains(event.target) && event.target !== openCart) {
+        cartContainer.classList.remove("visibleCart");
         overley.classList.remove("visibleOverley")
         unlockScroll(); // Desbloquea el scroll
     }
@@ -157,6 +157,43 @@ const products = [
     }
 ];
 
+let cart = [];
+
+// Añadir evento a cada botón "Comprar"
+const addProductToCart = (product) => {
+    // Añadir el producto al carrito (si ya existe, simplemente aumenta la cantidad)
+    const productInCart = cart.find(item => item.id === product.id);
+    
+    if (productInCart) {
+        productInCart.cantidad += 1;
+    } else {
+        cart.push({ ...product, cantidad: 1 });
+    }
+
+    // Llamar a la función que actualiza la vista del carrito
+    renderCart();
+};
+
+// Renderizar productos en el carrito
+const renderCart = () => {
+    const cartProductsList = document.querySelector(".cart-products-list");
+
+    cartProductsList.innerHTML = ""; // Limpiar el carrito antes de renderizar
+
+    cart.forEach(product => {
+        const div = document.createElement("div");
+        div.className = 'cart-product-card';
+        div.innerHTML = `
+            <img src="${product.imagen}" alt="${product.nombre}">
+            <p>${product.nombre}</p>
+            <p>Cantidad: ${product.cantidad}</p>
+        `;
+        cartProductsList.append(div);
+    });
+};
+
+
+//Renderizacion de los productos
 const displayProducts = (productList) => {
     const productsCards = document.querySelector(".products-cards");
 
@@ -169,8 +206,13 @@ const displayProducts = (productList) => {
             <img src="${product.imagen}" alt="${product.nombre}">
             <p>${product.nombre}</p>
             <p class="price">$${product.precio}</p>
-        
+            <button class="addToCart" type="button">Comprar</button>
         `
+
+        div.querySelector(".addToCart").addEventListener("click", () => {
+            addProductToCart(product);
+        });
+
         productsCards.append(div);
     });
 
@@ -207,5 +249,7 @@ buzosBtn.addEventListener('click', () => {
 });
 
 displayProducts(products);
+
+
 
 
