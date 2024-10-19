@@ -484,6 +484,18 @@ body{
             & a:hover{
                 background-color: transparent;
             }
+
+            & .cart_listchild{
+                
+    
+                & div{
+                    top: -5px;
+                    right: -2px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 10px;
+                }
+            }
             
         }
         & .cart{
@@ -519,6 +531,22 @@ body{
             & .title-container{
                 & .cart-title{
                     font-size: 20px;
+                }
+            }
+            
+        }
+        & .nav-icons{
+        
+    
+            & .cart_listchild{
+                
+    
+                & div{
+                    top: -5px;
+                    right: -2px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 10px;
                 }
             }
             
@@ -599,7 +627,7 @@ body{
                  
                 
                 & a{
-                    font-size: 10px;
+                    font-size: 12px;
                 }
             }
             
@@ -611,8 +639,8 @@ body{
 
             & .card{
                 & img{
-                    width: 120px;
-                    height: 190px;
+                    width: 150px;
+                    height: auto;
                 }
                 & p{
                     font-size: 10px;
