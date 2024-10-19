@@ -155,6 +155,26 @@ const products = [
 //Array vacio
 let cart = []; 
 
+// Función para eliminar un producto del carrito
+const removeProductFromCart = (productId) => {
+    cart = cart.filter(product => product.id !== productId); 
+    updateCartQuantity(); 
+    renderCart(); 
+};
+
+// Actualiza la cantidad total de productos en el carrito
+const updateCartQuantity = () => {
+    const totalQuantity = cart.reduce((sum, product) => sum + product.cantidad, 0);
+    const quantityOfProducts = document.querySelector(".cart-quantity");
+
+    quantityOfProducts.textContent = totalQuantity; 
+    if (totalQuantity > 0) {
+        quantityOfProducts.classList.add("visibleDiv");
+    } else {
+        quantityOfProducts.classList.remove("visibleDiv"); 
+    }
+};
+
 const renderCart = () => {
     const cartProductsList = document.querySelector(".cart-products-list");
     cartProductsList.innerHTML = "";
@@ -172,11 +192,19 @@ const renderCart = () => {
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
             <div class="product-card-cart-right-section">
-                <p>${product.nombre}</p>
-                <p>$${product.precio}</p>
-                <p>Cantidad: ${product.cantidad}</p>
+                <div>
+                    <p>${product.nombre}</p>
+                    <p>$${product.precio}</p>
+                    <p>Cantidad: ${product.cantidad}</p>
+                </div>
+                <a class="delete-button">Eliminar producto</a>
             </div>
         `;
+
+        div.querySelector(".delete-button").addEventListener("click", () => {
+            removeProductFromCart(product.id); 
+        });
+
         cartProductsList.append(div);
     });
 };
@@ -190,6 +218,8 @@ const addProductToCart = (product) => {
     } else {
         cart.push({ ...product, cantidad: 1 });
     }
+
+    updateCartQuantity();
 
     renderCart(); 
 };
