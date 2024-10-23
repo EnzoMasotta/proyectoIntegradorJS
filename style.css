@@ -394,6 +394,40 @@ body{
     }
 }
 
+/*Sobre nosotros*/
+.about-us{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    & h3{
+        font-weight: 500;
+        font-size: 30px;
+    }
+    & .about-us_cards{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        
+
+        & .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            & img{
+                width: 55px;
+                height: auto;
+            }
+        }
+    }
+}
+
 @media (max-width: 1440px){
     .advice{
         height: 35px;
