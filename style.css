@@ -448,6 +448,7 @@ footer{
     height: auto; 
     background-color: #f6f6f6;
     padding: 2% 0;
+    gap: 100px;
 
     & .top{
         display: flex;
@@ -455,8 +456,49 @@ footer{
         width: 100%;
         justify-content: space-between;
         align-items: start;
-        padding: 0 5%;
+        padding: 0 10%;
+        gap: 70px;
     
+        & .menu{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & p{
+                color: #6c6767;
+                cursor: pointer;
+            }
+            & p:nth-child(1){
+                color: #000000;
+                margin-bottom: 5px;
+            }
+        }
+        & .contact{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            & p{
+                color: #6c6767;
+                cursor: pointer;
+            }
+            & p:nth-child(1){
+                color: #000000;
+                margin-bottom: 20px;
+            }
+        }
+        & .newsletter{
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+
+            & input{
+                height: 30px;
+                padding: 0 2%;
+                border-radius: 10px;
+                border: 1px solid #6c6767;
+            }
+        }
     }
     & .bottom{
         display: flex;
@@ -529,7 +571,7 @@ footer{
             & form{
                 display: flex;
                 
-                & button{
+                & a{
                     font-size: 17px;
                     background-color: transparent;
                     padding: 10px;
@@ -717,6 +759,13 @@ footer{
                     font-size: 10px;
                 }
             }
+        }
+    }
+    .about-us{
+      
+        & h3{
+            font-weight: 600;
+            font-size: 25px;
         }
     }
 }
