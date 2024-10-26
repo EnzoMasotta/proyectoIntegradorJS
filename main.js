@@ -162,16 +162,21 @@ const removeProductFromCart = (productId) => {
     renderCart(); 
 };
 
-// Actualiza la cantidad total de productos en el carrito
+// Calcula el subtotal de un producto en el carrito
+const calculateSubtotal = (product) => {
+    return product.precio * product.cantidad;
+};
+
+// Actualiza la cantidad total de productos y el precio total en el carrito
 const updateCartQuantity = () => {
     const totalQuantity = cart.reduce((sum, product) => sum + product.cantidad, 0);
     const quantityOfProducts = document.querySelector(".cart-quantity");
 
-    quantityOfProducts.textContent = totalQuantity; 
+    quantityOfProducts.textContent = totalQuantity;
     if (totalQuantity > 0) {
         quantityOfProducts.classList.add("visibleDiv");
     } else {
-        quantityOfProducts.classList.remove("visibleDiv"); 
+        quantityOfProducts.classList.remove("visibleDiv");
     }
 };
 
@@ -189,13 +194,16 @@ const renderCart = () => {
     cart.forEach(product => {
         const div = document.createElement("div");
         div.className = 'cart-product-card';
+
+        // Llama a calculateSubtotal para obtener el subtotal
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
             <div class="product-card-cart-right-section">
                 <div>
                     <p>${product.nombre}</p>
-                    <p>$${product.precio}</p>
+                    <p>Precio unitario: $${product.precio}</p>
                     <p>Cantidad: ${product.cantidad}</p>
+                    <p>Subtotal: $${calculateSubtotal(product)}</p> <!-- Llama a la función aquí -->
                 </div>
                 <a class="delete-button">Eliminar producto</a>
             </div>
@@ -208,6 +216,7 @@ const renderCart = () => {
         cartProductsList.append(div);
     });
 };
+
 
 // Añadir producto al carrito 
 const addProductToCart = (product) => {
