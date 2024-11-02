@@ -152,22 +152,50 @@ const products = [
     }
 ];
 
-//Array vacio
-let cart = []; 
+// Variables globales
+let cart = [];
 
-// Función para eliminar un producto del carrito
-const removeProductFromCart = (productId) => {
-    cart = cart.filter(product => product.id !== productId); 
-    updateCartQuantity(); 
-    renderCart(); 
+// Funciones de localStorage
+const saveCartToLocalStorage = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+const loadCartFromLocalStorage = () => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+        cart = JSON.parse(storedCart);
+        renderCart();  // Renderiza el carrito con los productos recuperados
+        updateCartQuantity(); // Actualiza la cantidad en el indicador
+    }
+};
+
+// Funciones de carrito
+const addProductToCart = (product) => {
+    const productInCart = cart.find(item => item.id === product.id);
+    
+    if (productInCart) {
+        productInCart.cantidad += 1; 
+    } else {
+        cart.push({ ...product, cantidad: 1 });
+    }
+
+    updateCartQuantity();
+    renderCart();
+    saveCartToLocalStorage();
+};
+
+const removeProductFromCart = (productId) => {
+    cart = cart.filter(product => product.id !== productId); 
+    updateCartQuantity();
+    renderCart();
+    saveCartToLocalStorage();
+};
 
 const calculateSubtotal = (product) => {
     return product.precio * product.cantidad;
 };
 
-
+// Función para actualizar la cantidad total de productos
 const updateCartQuantity = () => {
     const totalQuantity = cart.reduce((sum, product) => sum + product.cantidad, 0);
     const quantityOfProducts = document.querySelector(".cart-quantity");
@@ -180,11 +208,11 @@ const updateCartQuantity = () => {
     }
 };
 
+// Renderizado del carrito
 const renderCart = () => {
     const cartProductsList = document.querySelector(".cart-products-list");
     cartProductsList.innerHTML = "";
 
-    
     if (cart.length === 0) {
         cartProductsList.innerHTML = "<p>Carrito vacío.</p>"; 
         return; 
@@ -192,12 +220,10 @@ const renderCart = () => {
 
     let total = 0; 
 
-    
     cart.forEach(product => {
         const div = document.createElement("div");
         div.className = 'cart-product-card';
 
-        
         const subtotal = calculateSubtotal(product);
         total += subtotal;
 
@@ -221,13 +247,13 @@ const renderCart = () => {
         cartProductsList.append(div);
     });
 
-    
+    // Mostrar el total
     const totalDiv = document.createElement("div");
     totalDiv.className = "cart-total";
     totalDiv.textContent = `Total: $${total}`;
     cartProductsList.appendChild(totalDiv);
 
-    
+    // Botón de comprar
     const button = document.createElement("button");
     button.className = "buy-button";
     button.type = "button";
@@ -235,40 +261,21 @@ const renderCart = () => {
     cartProductsList.appendChild(button);
 };
 
-
-
-// Añadir producto al carrito 
-const addProductToCart = (product) => {
-    const productInCart = cart.find(item => item.id === product.id);
-    
-    if (productInCart) {
-        productInCart.cantidad += 1; 
-    } else {
-        cart.push({ ...product, cantidad: 1 });
-    }
-
-    updateCartQuantity();
-
-    renderCart(); 
-};
-
-renderCart();
-
-//Renderizacion de los productos en el sitio
+// Renderizado de productos en el sitio
 const displayProducts = (productList) => {
     const productsCards = document.querySelector(".products-cards");
 
-    productsCards.innerHTML = ""
+    productsCards.innerHTML = "";
 
     productList.forEach(product => {
         const div = document.createElement("div");
-        div.className = 'card'
+        div.className = 'card';
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
             <p>${product.nombre}</p>
             <p class="price">$${product.precio}</p>
             <button class="addToCart" type="button">Comprar</button>
-        `
+        `;
 
         div.querySelector(".addToCart").addEventListener("click", () => {
             addProductToCart(product);
@@ -276,23 +283,19 @@ const displayProducts = (productList) => {
 
         productsCards.append(div);
     });
+};
 
-    
-}
-
-//Filtro de categorias
+// Filtro de categorías y botones de categorías
 const filterProducts = (categoria) => {
     const productToShow = products.filter(product => product.categoria === categoria);
     displayProducts(productToShow);
-}
+};
 
-//Botones de categorias
 const todoBtn = document.getElementById("todoBtn");
 const remerasBtn = document.getElementById("remerasBtn");
 const pantalonesBtn = document.getElementById("pantalonesBtn");
 const buzosBtn = document.getElementById("buzosBtn");
 
-//Funciones de los botones
 todoBtn.addEventListener('click', () => {
     displayProducts(products);
 });
@@ -309,8 +312,7 @@ buzosBtn.addEventListener('click', () => {
     filterProducts('buzos');
 });
 
+// Inicialización de la página
 displayProducts(products);
-
-
-
-
+loadCartFromLocalStorage();
+renderCart();
