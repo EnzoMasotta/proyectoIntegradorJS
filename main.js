@@ -162,12 +162,12 @@ const removeProductFromCart = (productId) => {
     renderCart(); 
 };
 
-// Calcula el subtotal de un producto en el carrito
+
 const calculateSubtotal = (product) => {
     return product.precio * product.cantidad;
 };
 
-// Actualiza la cantidad total de productos y el precio total en el carrito
+
 const updateCartQuantity = () => {
     const totalQuantity = cart.reduce((sum, product) => sum + product.cantidad, 0);
     const quantityOfProducts = document.querySelector(".cart-quantity");
@@ -184,18 +184,23 @@ const renderCart = () => {
     const cartProductsList = document.querySelector(".cart-products-list");
     cartProductsList.innerHTML = "";
 
-    // Verifica si el carrito está vacío
+    
     if (cart.length === 0) {
         cartProductsList.innerHTML = "<p>Carrito vacío.</p>"; 
         return; 
     }
 
-    // Renderiza los productos del carrito
+    let total = 0; 
+
+    
     cart.forEach(product => {
         const div = document.createElement("div");
         div.className = 'cart-product-card';
 
-        // Llama a calculateSubtotal para obtener el subtotal
+        
+        const subtotal = calculateSubtotal(product);
+        total += subtotal;
+
         div.innerHTML = `
             <img src="${product.imagen}" alt="${product.nombre}">
             <div class="product-card-cart-right-section">
@@ -203,7 +208,7 @@ const renderCart = () => {
                     <p>${product.nombre}</p>
                     <p>Precio unitario: $${product.precio}</p>
                     <p>Cantidad: ${product.cantidad}</p>
-                    <p>Subtotal: $${calculateSubtotal(product)}</p> <!-- Llama a la función aquí -->
+                    <p>Subtotal: $${subtotal}</p>
                 </div>
                 <a class="delete-button">Eliminar producto</a>
             </div>
@@ -215,7 +220,21 @@ const renderCart = () => {
 
         cartProductsList.append(div);
     });
+
+    
+    const totalDiv = document.createElement("div");
+    totalDiv.className = "cart-total";
+    totalDiv.textContent = `Total: $${total}`;
+    cartProductsList.appendChild(totalDiv);
+
+    
+    const button = document.createElement("button");
+    button.className = "buy-button";
+    button.type = "button";
+    button.textContent = "Comprar";
+    cartProductsList.appendChild(button);
 };
+
 
 
 // Añadir producto al carrito 
@@ -233,7 +252,6 @@ const addProductToCart = (product) => {
     renderCart(); 
 };
 
-// Inicialmente renderiza el carrito vacío
 renderCart();
 
 //Renderizacion de los productos en el sitio

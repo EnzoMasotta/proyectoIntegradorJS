@@ -30,6 +30,7 @@ a {
     text-decoration: none;
     font-family: "Inter", sans-serif;
     outline: none;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -264,6 +265,13 @@ body{
                     }
 
                 }
+            }
+            & .buy-button{
+                cursor: pointer;
+                background-color: #3baf52;
+                border: none;
+                height: 30px;
+                border-radius: 10px;
             }
         }
         
